@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | Sabbatini Modas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/produtos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            <div class="logo">
+                <img src="images/logo-sabbatini.png" alt="Sabbatini Modas">
+            </div>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar produtos...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-menu">
+                        <img src="images/icons/user.png" alt="Usuário" class="user-avatar">
+                        <span class="user-name">Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="produtos.html" class="nav-link">
+                        <i class="fas fa-tshirt"></i>
+                        <span>Produtos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="vendas.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Vendas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="caixa.html" class="nav-link">
+                        <i class="fas fa-cash-register"></i>
+                        <span>Caixa</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="relatorios.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div class="page-title">
+                <h1>Produtos</h1>
+                <p>Gerencie seu catálogo de produtos</p>
+            </div>
+            <div class="page-actions">
+                <button class="btn btn-primary" id="addProductBtn">
+                    <i class="fas fa-plus"></i> Novo Produto
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label>Categoria:</label>
+                    <select class="form-select" id="categoryFilter">
+                        <option value="">Todas as categorias</option>
+                        <option value="vestidos">Vestidos</option>
+                        <option value="camisetas">Camisetas</option>
+                        <option value="conjuntos">Conjuntos</option>
+                        <option value="acessorios">Acessórios</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status:</label>
+                    <select class="form-select" id="statusFilter">
+                        <option value="">Todos os status</option>
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                        <option value="estoque_baixo">Estoque Baixo</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Ordenar por:</label>
+                    <select class="form-select" id="sortFilter">
+                        <option value="nome">Nome</option>
+                        <option value="preco">Preço</option>
+                        <option value="estoque">Estoque</option>
+                        <option value="vendas">Mais Vendidos</option>
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button class="btn btn-outline-secondary" id="clearFilters">
+                        <i class="fas fa-times"></i> Limpar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-category="vestidos" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto1.jpg" alt="Vestido Elegante Verde">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Vestido Elegante Verde</h3>
+                        <p class="product-category">Vestidos</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 189,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 15 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 23 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card" data-category="conjuntos" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto2.jpg" alt="Conjunto Alfaiataria">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Conjunto Alfaiataria</h3>
+                        <p class="product-category">Conjuntos</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 299,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 8 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 18 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card" data-category="conjuntos" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto3.jpg" alt="Conjunto Casual Elegante">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Conjunto Casual Elegante</h3>
+                        <p class="product-category">Conjuntos</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 159,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 12 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 15 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card" data-category="camisetas" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto4.jpg" alt="Camiseta Premium Branca">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Camiseta Premium Branca</h3>
+                        <p class="product-category">Camisetas</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 79,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 25 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 12 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card" data-category="camisetas" data-status="estoque_baixo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto5.jpg" alt="Combo Camisetas Masculinas">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge warning">Estoque Baixo</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Combo Camisetas Masculinas</h3>
+                        <p class="product-category">Camisetas</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 149,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 3 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 8 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card" data-category="camisetas" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto6.jpg" alt="Camisetas Masculinas Variadas">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Camisetas Masculinas Variadas</h3>
+                        <p class="product-category">Camisetas</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 89,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 18 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 6 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 7 -->
+                <div class="product-card" data-category="vestidos" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto7.jpg" alt="Vestidos de Verão">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Vestidos de Verão</h3>
+                        <p class="product-category">Vestidos</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 129,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 20 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 10 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 8 -->
+                <div class="product-card" data-category="vestidos" data-status="ativo">
+                    <div class="product-image">
+                        <img src="images/produtos/produto8.jpg" alt="Vestido Azul Elegante">
+                        <div class="product-overlay">
+                            <button class="btn btn-icon btn-primary" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-icon btn-danger" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-icon btn-info" title="Ver Detalhes">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge success">Em Estoque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Vestido Azul Elegante</h3>
+                        <p class="product-category">Vestidos</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 249,90</span>
+                        </div>
+                        <div class="product-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i> 7 unidades
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-chart-line"></i> 5 vendas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <nav class="pagination">
+                <button class="pagination-btn" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+    </main>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Novo Produto</h2>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Nome do Produto</label>
+                            <input type="text" id="productName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Categoria</label>
+                            <select id="productCategory" class="form-select" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="vestidos">Vestidos</option>
+                                <option value="camisetas">Camisetas</option>
+                                <option value="conjuntos">Conjuntos</option>
+                                <option value="acessorios">Acessórios</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Preço (R$)</label>
+                            <input type="number" id="productPrice" class="form-control" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Estoque</label>
+                            <input type="number" id="productStock" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Descrição</label>
+                        <textarea id="productDescription" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productImage">Imagem do Produto</label>
+                        <input type="file" id="productImage" class="form-control" accept="image/*">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" id="cancelBtn">Cancelar</button>
+                <button type="submit" class="btn btn-primary" form="productForm">Salvar Produto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/produtos.js"></script>
+</body>
+</html>
+
