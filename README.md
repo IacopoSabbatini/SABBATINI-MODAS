@@ -1,4 +1,5 @@
-Loja de Roupas - PI
+Sabbatini Modas - PI Etapa 9 
+
 🛠️ Status do projeto: CONCLUÍDO!! ✅✅✅
 
 📌 Tecnologias utilizadas:
